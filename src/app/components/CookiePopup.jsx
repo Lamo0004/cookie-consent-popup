@@ -1,7 +1,7 @@
 "use client";
 import { use, useState } from "react";
-import { BiSolidCookie } from "react-icons/bi";
-import { RxCross2 } from "react-icons/rx";
+import CookieHeader from "./CookieHeader";
+import CookieFooter from "./CookieFooter";
 
 const CookiePopup = () => {
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
@@ -10,14 +10,8 @@ const CookiePopup = () => {
     !cookiesAccepted && (
       /* Hvis det er sandt at værdien er cookie accepted er true, så hvis følgende. Ellers lad være */
       <article className="cookiePopup">
-        <div className="icons">
-          <BiSolidCookie className="cookie" />
-          <RxCross2 className="cross" />
-        </div>
-        <p className="paragraph">We use cookies to improve your user experience</p>
-        <button onClick={() => setCookiesAccepted(!cookiesAccepted)} /* Sætter værdien til det modsatte */ className="button">
-          I like Cookies
-        </button>
+        <CookieHeader></CookieHeader>
+        <CookieFooter cookiesAccepted={cookiesAccepted} setCookiesAccepted={setCookiesAccepted} /* sender værdien med ned (prop), så vi har adgang til statet nede i komponentet*/></CookieFooter>
       </article>
     )
   );
